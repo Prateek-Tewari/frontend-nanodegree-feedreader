@@ -90,7 +90,7 @@ $(
 
       it("has,at least 1 entry element,within feed container,on loadfeed function completion", function() {
         let feedContainer = document.querySelector(".feed");
-        expect(feedContainer.children.length).toBeGreaterThan(0);
+        expect($(".feed .entry").length).toBeGreaterThan(0);
       });
     });
 
@@ -104,7 +104,7 @@ $(
        */
       beforeEach(function(done) {
         loadFeed(0);
-        Array.from(feedContainer.children).map(function(entry) {
+        Array.from($(".feed .entry")).map(function(entry) {
           feedOne.push(entry.innerText);
         });
         //console.log(feedOne);
@@ -112,7 +112,7 @@ $(
       });
 
       it("changes content", function() {
-        Array.from(feedContainer.children).map(function(entry, index) {
+        Array.from($(".feed .entry")).map(function(entry, index) {
           expect(entry.innerText === feedOne[index]).toBe(false);
           expect(
             entry.innerText,
